@@ -1,0 +1,52 @@
+<div class="w-75 mx-auto py-4">
+    <ngx-typed-js class="my-3" [strings]="['Welcome To Our eCommerce Site', 'Sign Up Now please:']" [loop]="true" [typeSpeed]="90" [backSpeed]="50" [showCursor]="false" [smartBackspace]="true">
+        <h4 class="typing mb-3 fw-bold"></h4>
+    </ngx-typed-js>
+    <div *ngIf="apiError.length > 0" class="my-3 alert alertDiv alertBlock">
+        {{apiError}};
+    </div>
+    <form (ngSubmit)="handleRegister(registerForm)" [formGroup]="registerForm" class="text-center">
+
+        <label for="name">Name :</label>
+        <input formControlName="name" type="text" class="d-block my-2" id="name">
+        <div *ngIf="registerForm.get('name')?.errors && registerForm.get('name')?.touched" class="alert alertDiv text-white fw-bold my-3">
+            <p *ngIf="registerForm.get('name')?.getError('minlength') | json" class="m-0">Name MinLength is 3</p>
+            <p *ngIf="registerForm.get('name')?.getError('maxlength') | json" class="m-0">Name MaxLength is 10</p>
+            <p *ngIf="registerForm.get('name')?.getError('required') | json" class="m-0">Name is Required</p>
+        </div>
+
+        <label for="email">E-mail :</label>
+        <input formControlName="email" type="email" class="d-block my-2" id="email">
+        <div *ngIf="registerForm.get('email')?.errors && registerForm.get('email')?.touched" class="alert alertDiv text-white fw-bold my-3">
+            <p *ngIf="registerForm.get('email')?.getError('email') | json" class="m-0">E-mail is invalid</p>
+            <p *ngIf="registerForm.get('email')?.getError('required') | json" class="m-0">E-mail is Required</p>
+        </div>
+
+        <label for="password">Password :</label>
+        <input formControlName="password" type="password" class="d-block my-2" id="password">
+        <div *ngIf="registerForm.get('password')?.errors && registerForm.get('password')?.touched" class="alert alertDiv text-white fw-bold my-3">
+            <p *ngIf="registerForm.get('password')?.getError('pattern') | json" class="m-0">Password Must Start With Uppercase then from 5 to 10 charcters</p>
+            <p *ngIf="registerForm.get('password')?.getError('required') | json" class="m-0">Password is Required</p>
+        </div>
+
+        <label for="rePassword">rePassword :</label>
+        <input formControlName="rePassword" type="password" class="d-block my-2" id="rePassword">
+        <div *ngIf="registerForm.get('rePassword')?.errors && registerForm.get('rePassword')?.touched" class="alert alertDiv text-white fw-bold my-3">
+            <p *ngIf="registerForm.get('rePassword')?.getError('pattern') | json" class="m-0">rePassword Must Start With Uppercase then from 5 to 10 charcters</p>
+            <p *ngIf="registerForm.get('rePassword')?.getError('required') | json" class="m-0">rePassword is Required</p>
+            <p *ngIf="registerForm.get('rePassword')?.getError('passwordMatch') | json" class="m-0">rePassword doesn't match</p>
+        </div>
+
+        <label for="phone">Phone :</label>
+        <input formControlName="phone" type="tel" class="d-block my-2" id="phone">
+        <div *ngIf="registerForm.get('phone')?.errors && registerForm.get('phone')?.touched" class="alert alertDiv text-white fw-bold my-3">
+            <p *ngIf="registerForm.get('phone')?.getError('pattern') | json" class="m-0">Enter an Egyptian phone</p>
+            <p *ngIf="registerForm.get('phone')?.getError('required') | json" class="m-0">phone is Required</p>
+        </div>
+
+        <button [disabled]="registerForm.invalid" class="reg text-white fw-bold" type="submit">
+            <i *ngIf="isLoading" class="fas fa-spinner fa-spin text-white"></i>
+            <span *ngIf="!isLoading">Register</span>
+        </button>
+    </form>
+</div>

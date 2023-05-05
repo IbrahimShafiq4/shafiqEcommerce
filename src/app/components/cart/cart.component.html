@@ -1,0 +1,67 @@
+<div class="header d-flex justify-content-between align-items-center">
+    <h3 class="fw-bold text-white">
+        <i class="bi bi-stars"></i> All Products
+    </h3>
+    <ul class="list-unstyled d-flex align-items-center p-1 gap-1 m-0">
+        <li class="py-2">
+            <i #grid class="px-2 py-2 bi bi-grid-1x2 text-white cursor-pointer" [class.active]="isActive"
+                (click)="isActivated()"></i>
+        </li>
+        <li class="py-2">
+            <i #list class="px-2 py-2 bi bi-list-task text-white cursor-pointer active" [class.active]="!isActive"
+                (click)="isActivated()"></i>
+        </li>
+    </ul>
+</div>
+
+<div class="shopDiv my-3 py-3 px-4 rounded-2">
+    <div class=" d-flex justify-content-between align-items-center">
+        <h2 class="text-white fw-bold">Shop Cart</h2>
+
+        <p class="text-main m-0 fw-semibold">Total Price: {{cartDetails?.totalCartPrice}} EGP</p>
+    </div>
+    <div class="d-flex justify-content-center">
+        <button class="btn btn-remove text-white mt-3" (click)="clearCartItem()">Clear Cart</button>
+    </div>
+</div>
+
+<div class="row" [class.w-75]="!isActive" [class.mx-auto]="!isActive">
+    <div #cart class="cart" *ngFor="let product of cartDetails?.products" [class.col-6]="isActive"
+        [class.col-md-4]="isActive">
+        <div #mainRow class="box">
+            <div class="row elements px-3 py-3 text-white rounded-2" [class.py-4]="isActive"
+                [class.align-items-center]="!isActive">
+                <div #imgCover [class.col-md-2]="!isActive">
+                    <div class="imgBx">
+                        <img #img [src]="product.product?.imageCover" [alt]="product.product?.title" class="rounded-2"
+                            style="width: 100%">
+                    </div>
+                </div>
+                <div #details [class.col-md-10]="!isActive" [class.my-2]="isActive">
+                    <h3 class="h5">{{product.product?.title.split(' ').splice(0, 5).join(' ')}}</h3>
+                    <div class="contentBx d-flex justify-content-between align-items-center">
+                        <div class="text-div">
+                            <p class="text-main m-0">Price: {{product.price}}</p>
+                        </div>
+                        <div class="d-flex justify-content-around align-items-center">
+                            <button (click)="updateItemCountFromCart(product.product?._id, product.count+1)"
+                                class="text-main px-1 countBtn">+</button>
+                            <span class="mx-2">{{product.count}}</span>
+                            <button (click)="updateItemCountFromCart(product.product?._id, product.count-1)"
+                                class="text-main px-1 countBtn">-</button>
+                        </div>
+                    </div>
+                    <button (click)="removeItem(product.product?._id)" class="btn btn-remove text-white mt-3"> <i
+                            class="fa-regular fa-trash-can text-main"></i> Remove</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div [class.w-75]="!isActive" [class.mx-auto]="!isActive">
+    <button class="btn btn-remove my-3 w-auto online">
+        <a routerLink="/checkout" class="text-white">
+            Online Payment
+        </a>
+    </button>
+</div>

@@ -1,0 +1,30 @@
+.top-img {
+    background-size: 100% 200%;
+    width: 185px;
+    height: 100px;
+    background-repeat: no-repeat;
+}
+
+.bottom-img {
+    background-size: 99.2% 115%;
+    width: 185px;
+    height: 150px;
+    position: relative;
+    top: -87px;
+    mix-blend-mode: color-burn;
+    background-repeat: no-repeat;
+}
+
+@media (max-width: 767px) {
+    .top-img {
+        background-size: 40% 200%;
+    }
+    .bottom-img {
+        background-size: 40% 116%;
+    }
+}
+
+.category-name {
+    position: relative;
+    top: -82px;
+}

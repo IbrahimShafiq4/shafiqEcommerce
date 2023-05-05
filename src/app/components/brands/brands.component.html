@@ -1,0 +1,8 @@
+<div class="row g-4 mt-5">
+    <h3 style="color: var(--main-color)" class="fw-bolder">Our brands</h3>
+    <div *ngFor="let brand of brands" class="col-md-3 position-relative z-3 w-25">
+        <div class="cursor-pointer">
+            <img [src]="brand.image" [alt]="brand.name" class="w-100">
+        </div>
+    </div>
+</div>

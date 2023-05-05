@@ -1,0 +1,31 @@
+<div class="row g-4">
+    <div>
+        <input [(ngModel)]="searchTerm" type="text" class="form-control w-75 mx-auto my-4" placeholder="search by name">
+    </div>
+    <div *ngFor="let product of products|search: searchTerm" class="col-lg-2 col-md-3 position-relative z-3">
+        <div class="product text-center cursor-pointer px-2 py-3 overflow-hidden">
+            <a [routerLink]="['/productdetails', product._id, product.title]">
+                <img src="{{product.imageCover}}" class="w-100"
+                    alt="{{product.title.split(' ').slice(1, 4).join(' ')}}">
+                <span class="text-main fw-bold font-sm category-name">{{product.category.name|lowercase}}</span>
+                <h3 class="h6 fw-bolder">{{product.title.split(' ').slice(0, 2).join(" ")}}</h3>
+                <div class="d-flex align-items-center justify-content-between px-2">
+                    <span class="text-muted fw-bold font-sm">{{product.price|currency:'EUR'}}</span>
+                    <span>
+                        <i class="fa-solid fa-star rating-color"></i>
+                        {{product.ratingsAverage}}
+                    </span>
+                </div>
+            </a>
+            <button class="btn bg-main text-white w-100 my-2" (click)="addToCart(product._id)">+
+                {{'Add'|lowercase}}</button>
+        </div>
+    </div>
+</div>
+
+<!-- <div class="rating">
+    <ng-container *ngFor="let j of [1, 2, 3, 4, 5]">
+        <i class="fas fa-star font-sm"
+            [class.rating-color]="j <= parseFloatNumber(product.ratingsAverage)"></i>
+    </ng-container>
+</div> -->

@@ -1,0 +1,10 @@
+*:not(i) {
+    color: #fff;
+}
+
+.category-name {
+    font-size: 12px;
+    background: linear-gradient(to left, var(--main-color), #03afae);    
+    color: transparent;
+    -webkit-background-clip: text;
+}

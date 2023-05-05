@@ -1,0 +1,81 @@
+.active {
+    background-color: var(--main-color);
+    transition: 0.3s linear;
+}
+
+.fa-brands {
+    cursor: pointer;
+}
+
+/* .navbar-toggler {
+    border: none;
+    overflow: hidden;
+}
+
+
+
+ */
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+.navbar-toggler-icon {
+    background-image: none;
+}
+
+
+
+/*  */
+
+.navbar-toggler {
+    overflow: hidden;
+}
+
+.navbar-toggler span {
+    display: block;
+    margin-bottom: 2px;
+    width: 30px;
+    height: 5px;
+    border-radius: 5px;
+    background-color: var(--main-color);
+    transition: 0.2s linear;
+    transform: rotate(0) translateY(0) translateX(0);
+}
+
+.navbar-toggler span.active:nth-child(1) {
+    transform: rotate(-50deg) translateY(5px) translateX(-5px)
+}
+
+.navbar-toggler span.active:nth-child(2) {
+    transform: translateX(43px)
+}
+
+.navbar-toggler span.active:nth-child(3) {
+    transform: rotate(50deg) translateY(-4px) translateX(-5px)
+}
+
+.activeBtn {
+    background-color: red;
+}
+
+.element {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+    scale: 0.75;
+}
+
+.nav-item,
+.nav-item a {
+    color: #fff;
+}
+
+.sec-background {
+    background-color: #161B22;
+}
+
+span.badge {
+    top: -15px;
+    right: -10px
+}

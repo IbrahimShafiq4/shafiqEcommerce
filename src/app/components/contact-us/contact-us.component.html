@@ -1,0 +1,39 @@
+<form [formGroup]="contactUsForm" class="w-50 mx-auto">
+
+    <label for="name">Name :</label>
+    <input formControlName="name" type="text" class="d-block my-2 w-100" id="name" placeholder="Enter Your Name..">
+    <div *ngIf="contactUsForm.get('name')?.errors && contactUsForm.get('name')?.touched"
+        class="alert alertDiv w-100 text-white fw-bold my-3">
+        <p *ngIf="contactUsForm.get('name')?.getError('minlength') | json" class="m-0">Name MinLength is 3</p>
+        <p *ngIf="contactUsForm.get('name')?.getError('maxlength') | json" class="m-0">Name MaxLength is 10</p>
+        <p *ngIf="contactUsForm.get('name')?.getError('required') | json" class="m-0">Name is Required</p>
+    </div>
+
+    <label for="email">E-mail :</label>
+    <input formControlName="email" type="email" class="d-block my-2 w-100" id="email" placeholder="Enter Your Email..">
+    <div *ngIf="contactUsForm.get('email')?.errors && contactUsForm.get('email')?.touched"
+        class="alert alertDiv w-100 text-white fw-bold my-3">
+        <p *ngIf="contactUsForm.get('email')?.getError('email') | json" class="m-0">E-mail is invalid</p>
+        <p *ngIf="contactUsForm.get('email')?.getError('required') | json" class="m-0">E-mail is Required</p>
+    </div>
+
+    <label for="phone">Phone :</label>
+    <input formControlName="phone" type="tel" class="d-block my-2 w-100" id="phone" placeholder="Enter Your Phone..">
+    <div *ngIf="contactUsForm.get('phone')?.errors && contactUsForm.get('phone')?.touched"
+        class="alert alertDiv w-100 text-white fw-bold my-3">
+        <p *ngIf="contactUsForm.get('phone')?.getError('pattern') | json" class="m-0">Enter an Egyptian phone</p>
+        <p *ngIf="contactUsForm.get('phone')?.getError('required') | json" class="m-0">phone is Required</p>
+    </div>
+
+    <label for="msg">Your Message</label>
+    <textarea id="msg" formControlName="message" class="d-block my-2 w-100" placeholder="Enter Your Message.."></textarea>
+    <div *ngIf="contactUsForm.get('message')?.errors && contactUsForm.get('message')?.touched"
+        class="alert alertDiv w-100 text-white fw-bold my-3">
+        <p *ngIf="contactUsForm.get('message')?.getError('required') | json" class="m-0">message is Required</p>
+    </div>
+
+    <button [disabled]="contactUsForm.invalid" class="reg text-white fw-bold" type="submit">
+        <i *ngIf="isLoading" class="fas fa-spinner fa-spin text-white"></i>
+        <span *ngIf="!isLoading" (click)="sendEmail()">Send</span>
+    </button>
+</form>

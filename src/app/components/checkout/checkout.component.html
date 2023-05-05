@@ -1,0 +1,16 @@
+<form (ngSubmit)="handleSumbit(shippingAddress)" [formGroup]="shippingAddress" class="text-center">
+
+    <label for="details">Details :</label>
+    <input formControlName="details" type="text" class="d-block my-2" id="details">
+
+    <label for="phone">Phone :</label>
+    <input formControlName="phone" type="tel" class="d-block my-2" id="phone">
+
+    <label for="city">City :</label>
+    <input formControlName="city" type="tel" class="d-block my-2" id="city">
+
+    <button [disabled]="shippingAddress.invalid" class="reg text-white fw-bold" type="submit">
+        <i *ngIf="isLoading" class="fas fa-spinner fa-spin text-white mt-3"></i>
+        <span *ngIf="!isLoading">Pay</span>
+    </button>
+</form>

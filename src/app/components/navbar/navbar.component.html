@@ -1,0 +1,67 @@
+<nav class="navbar navbar-expand-lg sec-background">
+    <div class="container d-flex align-items-center">
+        <a class="navbar-brand" routerLink="home">
+            <img src="./assets/images/freshcart-logo.svg" alt="">
+        </a>
+        <button class="navbar-toggler ms-sm-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon" [class.active]="isActive" (click)="isActivated()"></span>
+            <span class="navbar-toggler-icon" [class.active]="isActive" (click)="isActivated()"></span>
+            <span class="navbar-toggler-icon" [class.active]="isActive" (click)="isActivated()"></span>
+            <!--  -->
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="d-flex py-3 justify-content-between w-100 align-items-center">
+                <ul class="navbar-nav me-auto gap-2 mb-lg-0" *ngIf="isLogin">
+                    <li class="nav-item">
+                        <a class="nav-link fs-6 fw-bold px-2 py-1 rounded-1" routerLinkActive="active text-white" routerLink="home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fs-6 fw-bold px-2 py-1 rounded-1" routerLinkActive="active text-white" routerLink="products">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fs-6 fw-bold px-2 py-1 rounded-1" routerLinkActive="active text-white" routerLink="cart">Cart</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fs-6 fw-bold px-2 py-1 rounded-1" routerLinkActive="active text-white" routerLink="categories">Categories</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fs-6 fw-bold px-2 py-1 rounded-1" routerLinkActive="active text-white" routerLink="brands">Brands</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fs-6 fw-bold px-2 py-1 rounded-1" routerLinkActive="active text-white" routerLink="contact-us">Contact Us</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ms-auto gap-2 mb-lg-0 d-flex align-items-center">
+                    <!-- <li class="nav-item d-flex align-items-center gap-3" *ngIf="isLogin">
+                        <i class="fa-brands fa-instagram"></i>
+                        <i class="fa-brands fa-facebook-f"></i>
+                        <i class="fa-brands fa-tiktok"></i>
+                        <i class="fa-brands fa-twitter"></i>
+                        <i class="fa-brands fa-linkedin"></i>
+                        <i class="fa-brands fa-youtube"></i>
+                    </li> -->
+                    <li class="nav-item" *ngIf="!isLogin">
+                        <a class="nav-link fs-6 fw-bold px-2 py-1 rounded-1" routerLinkActive="active text-white" routerLink="login">Log in</a>
+                    </li>
+                    <li class="nav-item" *ngIf="!isLogin">
+                        <a class="nav-link fs-6 fw-bold px-2 py-1 rounded-1" routerLinkActive="active text-white" routerLink="register">sign up</a>
+                    </li>
+                    <li class="nav-item" *ngIf="isLogin">
+                        <a class="cursor-pointer nav-link fs-6 fw-bold px-2 py-1 rounded-1" (click)="logOut()">LogOut</a>
+                    </li>
+                    <li class="nav-item" *ngIf="isLogin">
+                        <a class="cursor-pointer nav-link fs-6 fw-bold px-2 py-1 rounded-1" routerLink="settings">Settings</a>
+                    </li>
+                    
+                    <li class="nav-item position-relative" *ngIf="isLogin">
+                        <a routerLink="cart" class="nav-link p-0">
+                            <i class="fas fa-cart-shopping text-main fa-lg"></i>
+                            <span class="badge bg-main text-white position-absolute">{{numOfCartItems}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>

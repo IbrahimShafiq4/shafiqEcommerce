@@ -1,0 +1,33 @@
+<div class="w-75 mx-auto py-4 vh-51">
+    <h4 class="mb-3 fs-3 fw-bolder mb-2 ">Login Now :</h4>
+
+    <div *ngIf="apiError" class="my-3 alert alertDiv alertBlock text-white fw-bold">
+        InCorrect E-mail or Password Sorry 😢
+    </div>
+
+    <form (ngSubmit)="handleLogin(loginForm)" [formGroup]="loginForm" class="text-center">
+
+        <label for="email">E-mail :</label>
+        <input formControlName="email" type="email" class="d-block my-2" id="email">
+        <div *ngIf="loginForm.get('email')?.errors && loginForm.get('email')?.touched"
+            class="alert alertDiv text-white fw-bold my-3">
+            <p *ngIf="loginForm.get('email')?.getError('email') | json" class="m-0">E-mail is invalid</p>
+            <p *ngIf="loginForm.get('email')?.getError('required') | json" class="m-0">E-mail is Required</p>
+        </div>
+
+        <label for="password">Password :</label>
+        <input formControlName="password" type="password" class="d-block my-2" id="password">
+        <div *ngIf="loginForm.get('password')?.errors && loginForm.get('password')?.touched"
+            class="alert alertDiv text-white fw-bold my-3">
+            <p *ngIf="loginForm.get('password')?.getError('pattern') | json" class="m-0">Password Must Start With
+                Uppercase then from 5 to 10 charcters</p>
+            <p *ngIf="loginForm.get('password')?.getError('required') | json" class="m-0">Password is Required</p>
+        </div>
+
+        <button [disabled]="loginForm.invalid" class="reg text-white fw-bold" type="submit">
+            <i *ngIf="isLoading" class="fas fa-spinner fa-spin text-white"></i>
+            <span *ngIf="!isLoading">Login</span>
+        </button>
+
+    </form>
+</div>

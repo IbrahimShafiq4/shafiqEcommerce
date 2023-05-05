@@ -1,0 +1,9 @@
+<div class="row g-3">
+    <div class="col-lg-4 col-md-6" *ngFor="let category of categories">
+        <div class="box overflow-hidden">
+            <img [src]="category.image" [alt]="category.name" class="w-100 rounded-2" height="400">
+            <h4 class="h6 fw-bolder px-3 text-start my-2">{{category.name}}</h4>
+            <h4 class="h6 fw-bolder px-3 text-start my-2">{{category.category}}</h4>
+        </div>
+    </div>
+</div>
